@@ -7,6 +7,19 @@ import NewBlogPost from "./views/new";
 import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
+  const getAuthors = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/authors")
+      console.log(response)
+      if (response.ok) {
+        const fetchedAuthors = await response.json()
+        console.log(fetchedAuthors)
+      }
+    } catch (error) {
+
+    }
+  }
+  getAuthors()
   return (
     <BrowserRouter>
       <NavBar />

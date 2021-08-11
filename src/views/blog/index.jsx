@@ -9,7 +9,20 @@ class Blog extends Component {
     blog: {},
     loading: true,
   };
+   getAuthors= async ()=>{
+     try {
+       const response=await fetch("http://localhost:3001/authors")
+       console.log(response)
+       if(response.ok){
+         const fetchedAuthors=await response.json()
+         console.log(fetchedAuthors)
+       }
+     } catch (error) {
+       
+     }
+   }
   componentDidMount() {
+    this.getAuthors()
     const { id } = this.props.match.params;
     console.log(posts);
     const blog = posts.find((post) => post._id.toString() === id);
