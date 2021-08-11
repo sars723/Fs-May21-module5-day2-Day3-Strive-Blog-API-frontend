@@ -9,29 +9,9 @@ class Blog extends Component {
     blog: {},
     loading: true,
   };
-   getAuthors= async ()=>{
-     try {
-       const response=await fetch("http://localhost:3001/authors")
-       console.log(response)
-       if(response.ok){
-         const fetchedAuthors=await response.json()
-         console.log(fetchedAuthors)
-       }
-     } catch (error) {
-       
-     }
-   }
-  componentDidMount() {
-    this.getAuthors()
-    const { id } = this.props.match.params;
-    console.log(posts);
-    const blog = posts.find((post) => post._id.toString() === id);
-    if (blog) {
-      this.setState({ blog, loading: false });
-    } else {
-      this.props.history.push("/404");
-    }
-  }
+  
+
+  
 
   render() {
     const { loading, blog } = this.state;
@@ -55,6 +35,13 @@ class Blog extends Component {
             </div>
 
             <div dangerouslySetInnerHTML={{ __html: blog.content }}></div>
+          </Container>
+          <Container>
+            {this.props.blogs.map(blog=>{
+            {/* <div>{blog.title}</div> */}
+  
+             
+            })}
           </Container>
         </div>
       );

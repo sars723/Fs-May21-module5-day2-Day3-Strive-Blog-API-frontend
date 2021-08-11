@@ -4,11 +4,35 @@ import BlogList from "../../components/blog/blog-list";
 import "./styles.css";
 
 export default class Home extends Component {
+state={
+  blogs:[]
+}
+ getBlogs = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/Blogs")
+      console.log(response)
+      if (response.ok) {
+        const fetchedBlogs = await response.json()
+        console.log(fetchedBlogs) 
+        this.setState({blogs:fetchedBlogs})
+        console.log(this.state.blogs)
+      }
+    } catch (error) {
+
+    }
+  }
+ componentDidMount=()=>{
+  this.getBlogs()
+ 
+ }
   render() {
     return (
       <Container fluid="sm">
         <h1 className="blog-main-title">Welcome to the Strive Blog!</h1>
-        <BlogList />
+        <div>{this.state.blogs.map(blog=>
+          <div>{blog.title}</div>
+        )}</div>
+        <BlogList blogs={this.state.blogs}/>
       </Container>
     );
   }

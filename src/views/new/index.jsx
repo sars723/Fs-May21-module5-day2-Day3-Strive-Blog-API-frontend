@@ -13,15 +13,7 @@ export default class NewBlogPost extends Component {
     }
    
   }
-  /* constructor(props) {
-    super(props);
-    this.state = { text: "" };
-    this.handleChange = this.handleChange.bind(this);
-  } */
 
- /*  handleChange(value) {
-    this.setState({ text: value });
-  } */
 postBlog=async()=>{
   try {
     const response=fetch("http://localhost:3001/blogs",
@@ -33,8 +25,8 @@ postBlog=async()=>{
       body: JSON.stringify(this.state.blogs),
     }
     )
-    if (response.ok) {
-      alert('blogs posted')
+    if (response.status_code===201) {
+      alert('blog posted')
       this.setState({
          blogs: {
           title:"",
@@ -43,9 +35,8 @@ postBlog=async()=>{
           }
       })
   } else {
-      // this is going to catch a server problem
-      // i.e: server is down, db has a problem
-      alert('Houston we had a problem, try again!')
+      
+      alert('we had a problem, try again!')
   }
   } catch (error) {
     console.log(error)
@@ -59,17 +50,20 @@ postBlog=async()=>{
     }
   
   });
-  /*  this.setState({
-    comments: {
-      ...this.state.comments,
-      [key]: value,
-    },
-  }); */
  
 };
 handleSubmit=(e)=>{
   e.preventDefault()
   this.postBlog()
+}
+reset=()=>{
+  this.setState({
+    blogs: {
+     title:"",
+     text:"",
+     category:""
+     }
+ })
 }
   render() {
     return (
@@ -81,7 +75,7 @@ handleSubmit=(e)=>{
              onChange={(e) => {
               this.handleChange("title", e.target.value);
             }}
-            /* onChange={e=>this.setState({blogs:{title:e.target.value}})} */ />
+             />
           </Form.Group>
           <Form.Group controlId="blog-category" className="mt-3">
             <Form.Label>Category</Form.Label>
@@ -89,7 +83,7 @@ handleSubmit=(e)=>{
              onChange={(e) => {
               this.handleChange("category", e.target.value);
             }}
-            /*  onChange={e=>this.setState({blogs:{category:e.target.value}})} */>
+           >
               <option>Category1</option>
               <option>Category2</option>
               <option>Category3</option>
@@ -97,17 +91,6 @@ handleSubmit=(e)=>{
               <option>Category5</option>
             </Form.Control>
           </Form.Group>
-         {/*  <Form.Group controlId="blog-content" className="mt-3">
-            <Form.Label>Blog Content</Form.Label>
-            <ReactQuill
-              value={this.state.blogs.text}
-              onChange={(e) => {
-                this.handleChange("text", e.target.value);
-              }}
-            
-              className="new-blog-content"
-            />
-          </Form.Group >*/}
           <Form.Group controlId="blog-content" className="mt-3">
     <Form.Label>Blog Content</Form.Label>
     <Form.Control as="textarea" rows={3} value={this.state.blogs.text}
@@ -118,7 +101,7 @@ handleSubmit=(e)=>{
               className="new-blog-content"/>
   </Form.Group>
           <Form.Group className="d-flex mt-3 justify-content-end">
-            <Button type="reset" size="lg" variant="outline-dark">
+            <Button type="reset" size="lg" variant="outline-dark" onClick={this.reset}>
               Reset
             </Button>
             <Button
