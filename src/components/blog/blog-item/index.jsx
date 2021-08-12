@@ -9,7 +9,12 @@ export default class BlogItem extends Component {
     return (
       <Link to={`/blog/${_id}`} className="blog-link">
         <Card className="blog-card">
-          <Card.Img variant="top" src={cover} className="blog-cover" />
+          <Card.Img
+            variant="top"
+            src={cover}
+            className="blog-cover "
+            style={{ objectFit: "cover !important" }}
+          />
           <Card.Body>
             <Card.Title>{title}</Card.Title>
           </Card.Body>
