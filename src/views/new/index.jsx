@@ -12,6 +12,7 @@ export default class NewBlogPost extends Component {
       text: "",
       category: "",
       cover: "",
+      comment: "",
     },
   };
 
@@ -33,6 +34,7 @@ export default class NewBlogPost extends Component {
             text: "",
             category: "",
             cover: "",
+            comment: "",
           },
         });
       } else {
@@ -62,6 +64,7 @@ export default class NewBlogPost extends Component {
         text: "",
         category: "",
         cover: "",
+        comment: "",
       },
     });
   };
@@ -80,17 +83,7 @@ export default class NewBlogPost extends Component {
               }}
             />
           </Form.Group>
-          <Form.Group controlId="blog-form" className="mt-3">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              size="lg"
-              placeholder="Cover"
-              value={this.state.blogs.cover}
-              onChange={(e) => {
-                this.handleChange("cover", e.target.value);
-              }}
-            />
-          </Form.Group>
+
           <Form.Group controlId="blog-form" className="mt-3">
             <Form.Label>Title</Form.Label>
             <Form.Control
@@ -99,6 +92,17 @@ export default class NewBlogPost extends Component {
               value={this.state.blogs.title}
               onChange={(e) => {
                 this.handleChange("title", e.target.value);
+              }}
+            />
+          </Form.Group>
+          <Form.Group controlId="blog-form" className="mt-3">
+            <Form.Label>Cover</Form.Label>
+            <Form.Control
+              size="lg"
+              placeholder="Cover"
+              value={this.state.blogs.cover}
+              onChange={(e) => {
+                this.handleChange("cover", e.target.value);
               }}
             />
           </Form.Group>
@@ -130,6 +134,17 @@ export default class NewBlogPost extends Component {
               }}
               /*  onChange={e=>this.setState({blogs:{text:e.target.value}})} */
               className="new-blog-content"
+            />
+          </Form.Group>
+          <Form.Group controlId="blog-form" className="mt-3">
+            <Form.Label>Comment</Form.Label>
+            <Form.Control
+              size="lg"
+              placeholder="comment"
+              value={this.state.blogs.comment}
+              onChange={(e) => {
+                this.handleChange("comment", e.target.value);
+              }}
             />
           </Form.Group>
           <Form.Group className="d-flex mt-3 justify-content-end">
