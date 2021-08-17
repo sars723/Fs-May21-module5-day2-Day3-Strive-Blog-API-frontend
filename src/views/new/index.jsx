@@ -18,7 +18,7 @@ export default class NewBlogPost extends Component {
 
   postBlog = async () => {
     try {
-      const response = await fetch("http://localhost:3001/blogs", {
+      const response = await fetch(`${process.env.REACT_APP_BE_URL}/Blogs`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
