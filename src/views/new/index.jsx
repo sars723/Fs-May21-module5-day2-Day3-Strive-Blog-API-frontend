@@ -18,13 +18,16 @@ export default class NewBlogPost extends Component {
 
   postBlog = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_BE_URL}/Blogs`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(this.state.blogs),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BE_PROD_URL}/Blogs`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(this.state.blogs),
+        }
+      );
       if (response.status === 201) {
         alert("blog posted");
         this.setState({

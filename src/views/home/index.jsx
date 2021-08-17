@@ -9,7 +9,9 @@ export default class Home extends Component {
   };
   getBlogs = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_BE_URL}/Blogs`);
+      const response = await fetch(
+        `${process.env.REACT_APP_BE_PROD_URL}/Blogs`
+      );
 
       if (response.ok) {
         const fetchedBlogs = await response.json();
