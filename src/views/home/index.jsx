@@ -11,10 +11,7 @@ export default class Home extends Component {
     try {
       console.log(process.env.REACT_APP_BE_PROD_URL);
       const response = await fetch(
-        `${process.env.REACT_APP_BE_PROD_URL}/blogs`,
-        {
-          mode: "no-cors", // 'cors' by default
-        }
+        `${process.env.REACT_APP_BE_PROD_URL}/blogs`
       );
       console.log(response);
       if (response.ok) {
