@@ -18,8 +18,9 @@ export default class NewBlogPost extends Component {
 
   postBlog = async () => {
     try {
+      console.log(process.env.REACT_APP_BE_PROD_URL);
       const response = await fetch(
-        `${process.env.REACT_APP_BE_PROD_URL}/Blogs`,
+        `${process.env.REACT_APP_BE_PROD_URL}/blogs`,
         {
           method: "POST",
           headers: {

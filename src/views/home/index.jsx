@@ -9,13 +9,17 @@ export default class Home extends Component {
   };
   getBlogs = async () => {
     try {
+      console.log(process.env.REACT_APP_BE_PROD_URL);
       const response = await fetch(
-        `${process.env.REACT_APP_BE_PROD_URL}/Blogs`
+        `${process.env.REACT_APP_BE_PROD_URL}/blogs`,
+        {
+          mode: "no-cors", // 'cors' by default
+        }
       );
-
+      console.log(response);
       if (response.ok) {
         const fetchedBlogs = await response.json();
-        /* console.log(fetchedBlogs); */
+        console.log(fetchedBlogs);
         this.setState({ blogs: fetchedBlogs });
         /* console.log(this.state.blogs); */
       }
