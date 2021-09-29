@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
 
-const LoginPage = () => {
+const LoginPage = ({ history }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
@@ -19,6 +19,7 @@ const LoginPage = () => {
       });
       if (response.ok) {
         alert("Logged in!");
+        history.push("/");
       } else {
         console.log("error");
         alert("something went wrong");
@@ -36,6 +37,7 @@ const LoginPage = () => {
         <div className="col-6">
           <Form className="d-flex flex-column" onSubmit={handleSubmit}>
             <input
+              className="mb-2"
               type="text"
               placeholder="email"
               className="mr-2"

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
 
-const Register = () => {
+const Register = ({ history }) => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +25,8 @@ const Register = () => {
         },
       });
       if (response.ok) {
-        alert("Logged in!");
+        alert("registered!");
+        history.push("/");
       } else {
         console.log("error");
         alert("something went wrong");

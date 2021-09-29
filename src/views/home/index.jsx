@@ -15,7 +15,7 @@ export default class Home extends Component {
       if (response.ok) {
         const fetchedBlogs = await response.json();
         console.log(fetchedBlogs);
-        this.setState({ blogs: fetchedBlogs });
+        this.setState({ blogs: fetchedBlogs.blogs });
         /* console.log(this.state.blogs); */
       }
     } catch (error) {}
