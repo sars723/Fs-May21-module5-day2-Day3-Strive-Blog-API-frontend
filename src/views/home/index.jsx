@@ -10,9 +10,7 @@ export default class Home extends Component {
   getBlogs = async () => {
     try {
       console.log(process.env.REACT_APP_BE_PROD_URL);
-      const response = await fetch(
-        `${process.env.REACT_APP_BE_PROD_URL}/blogs`
-      );
+      const response = await fetch(`${process.env.REACT_APP_BE_DEV_URL}/blogs`);
       console.log(response);
       if (response.ok) {
         const fetchedBlogs = await response.json();
@@ -33,7 +31,7 @@ export default class Home extends Component {
           <div>{blog.title}</div>
         )}</div> */}
         {console.log(this.state.blogs)}
-        <BlogList blogs={this.state.blogs} />
+        {this.state.blogs && <BlogList blogs={this.state.blogs} />}
       </Container>
     );
   }

@@ -4,6 +4,7 @@ import "./styles.css";
 export default class BlogAuthor extends Component {
   render() {
     const { name, avatar } = this.props;
+    console.log(avatar);
     return (
       <Row>
         <Col xs={2}>

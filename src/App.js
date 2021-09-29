@@ -5,6 +5,8 @@ import Home from "./views/home";
 import Blog from "./views/blog";
 import NewBlogPost from "./views/new";
 import { BrowserRouter, Route } from "react-router-dom";
+import LoginPage from "./components/login/LoginPage";
+import Register from "./components/register/Register";
 
 function App() {
 /*   const getAuthors = async () => {
@@ -26,6 +28,8 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <Route path="/register" exact component={Register} />
+      <Route path="/login" exact component={LoginPage} />
       <Route path="/" exact component={Home} />
       <Route path="/blog/:id" exact component={Blog} />
       <Route path="/new" exact component={NewBlogPost} />

@@ -20,7 +20,7 @@ export default class NewBlogPost extends Component {
     try {
       console.log(process.env.REACT_APP_BE_PROD_URL);
       const response = await fetch(
-        `${process.env.REACT_APP_BE_PROD_URL}/blogs`,
+        `${process.env.REACT_APP_BE_DEV_URL}/blogs`,
         {
           method: "POST",
           headers: {
